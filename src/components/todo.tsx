@@ -18,7 +18,7 @@ const Todo = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-    <h1 className="text-3xl font-bold bg-gradient-to-br from-red-500 via-green-500 to-red-500 text-center px-4 py-2 rounded-md mb-4">Todo List</h1>
+    <h1 className="text-3xl font-bold bg-gradient-to-br from-red-500 via-green-500 to-red-500 text-center px-4 py-2 rounded-md mb-4 bg-clip-text text-transparent">Todo List</h1>
     <div className="flex mb-4">
       <input
         type="text"
