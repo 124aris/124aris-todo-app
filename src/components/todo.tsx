@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
+'use client';
 
-const Todo = () => {
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { FaTrash, FaPlus } from "react-icons/fa";
+import { Separator } from "@/components/ui/separator";
+
+
+const Todo =() => {
+  const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState<string[]>([]);
-  const [inputValue, setInputValue] = useState('');
 
-  const handleAddTodo = () => {
-    if (inputValue.trim() !== '') {
-      setTodos([...todos, inputValue]);
-      setInputValue('');
-    }
+  const addTodo = () => {
+    setTodos([...todos, todo]);
+    setTodo("");
   };
 
-  const handleRemoveTodo = (index: number) => {
-    const updatedTodos = todos.filter((_, i) => i !== index);
-    setTodos(updatedTodos);
+  const deleteTodo = (index: number) => {
+    const updateTodo = [...todos];
+    updateTodo.splice(index, 1);
+    setTodos(updateTodo);
   };
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-    <h1 className="text-3xl font-bold bg-gradient-to-br from-red-500 via-green-500 to-red-500 text-center px-4 py-2 rounded-md mb-4 bg-clip-text text-transparent">Todo List</h1>
-    <div className="flex mb-4">
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Enter a new todo"
-        className="px-4 py-2 border rounded-l w-full p-4 bg-slate-900"
-      />
-      <button onClick={handleAddTodo} className="px-4 py-2 bg-yellow-500 text-black rounded-r ml-2">
-        Add
-      </button>
-    </div>
-    <ul>
-      {todos.map((todo, index) => (
-        <li key={index} className="flex items-center justify-between mb-2 bg-slate-600 text-black px-4 py-2 rounded">
-          {todo}
-          <button onClick={() => handleRemoveTodo(index)} className="text-red-500 ml-5">
-            X
-          </button>
-        </li>
-      ))}
-    </ul>
-  </div>
-  
+  return(
+    <main>
+      <div className="flex flex-col items-center justify-center mt-10">
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl py-2 mb-4 bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">Todo List</h1>
+        <div className="flex w-full max-w-sm items-center space-x-2">
+          <Input type="text"  value={todo} onChange={(e)=>{setTodo(e.target.value);}} placeholder="Enter a new todo" />
+          <Button onClick={addTodo}><FaPlus/>Add</Button>
+        </div>
+        <div className="mt-10 rounded border border-input bg-background">
+          {todos.map((item, index) => (
+            <div key={index}>
+              <div className="flex items-center justify-between px-4 py-2 rounded">
+                <p>{item}</p>
+                <Button variant={"destructive"} onClick={() => deleteTodo(index)} className="ml-5"><FaTrash/></Button>
+              </div>
+              <Separator/>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
   );
 };
 
