@@ -26,7 +26,7 @@ const Todo =() => {
     <main>
       <div className="flex flex-col items-center justify-center mt-10">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl py-2 mb-4 bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">Todo List</h1>
-        <div className="flex w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl items-center space-x-2">
+        <div className="flex w-full max-w-80 md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl items-center space-x-2">
           <Input type="text"  value={todo} onChange={(e)=>{setTodo(e.target.value);}} placeholder="Enter a new todo" />
           <Button onClick={addTodo}><FaPlus/>Add</Button>
         </div>
