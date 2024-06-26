@@ -17,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head><meta name="google-adsense-account" content="ca-pub-6557456098546788"/></head>
       <body className="flex flex-col justify-between min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div>
